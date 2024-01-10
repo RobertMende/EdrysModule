@@ -36,24 +36,8 @@
         Edrys.onReady(()=>{
               if(Edrys.role==="station"){
                 const username=Edrys.username;
-                  console.log("Station script");
-                  const url="ws://localhost:8765";
-                  const ws=new WebSocket(url);
-                  Edrys.onMessage(({from, subject, body})=>{
-                    while(!(ws.readyState===ws.OPEN)){}
-                    if(from!=username) ws.send(body);
-    
-                    });
-
-                  ws.addEventListener("open", (e)=>console.log("WS open"));
-                  ws.addEventListener("message", (e)=>{
-                    const msg=JSON.parse(e.data);
-                    if(msg.topic==="dataUpdate"||msg.topic==="stateChanged") Edrys.sendMessage(msg.topic, e.data);
-                    console.log(msg);
-                  }
-                  );
-
-                  Edrys.module.config.state="Hello World";
+                console.log("Station script");
+                Edrys.module.config.state="Hello World";
               }
               else if(Edrys.role!=="station"){
                 if(Edrys.module.config.hasOwnProperty("state")) console.log("state:", Edrys.module.config.state)
