@@ -34,15 +34,12 @@
                 console.log(Edrys);
                 const username=Edrys.username;
                 console.log("Station script");
-                Edrys.module.config={}
-                Edrys.module.config.state="Hello World";
+
                 Edrys.setItem("date", "today");
                 console.log(Edrys.getItem("date"));
               }
               else if(Edrys.role!=="station"){
                 console.log(Edrys);
-                if(Edrys.module.config.hasOwnProperty("state")) console.log("state:", Edrys.module.config.state)
-                else console.log("No state available");
                 console.log(Edrys.getItem("date"));
               }
             })
